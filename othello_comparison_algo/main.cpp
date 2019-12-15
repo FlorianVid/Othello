@@ -4,9 +4,9 @@
 #include "./include/ArtificialIntelligence.h"
 #include "./include/coordinates.h"
 #include <tuple>
-
 #include <ctime>
 #include <cmath>
+//#include <fstream>
 
 using namespace std;
 
@@ -36,18 +36,26 @@ int main(){
     for(int i = 0; i<nbIt; i++){
         gameOnGoing = 1;
         while( gameOnGoing == 1 ){
-            if(playerId == playerRandomId){
-                coordChosen = aiRandom.makeDecision(othelloField);
-            }
-            else if(playerId == playerGreedyId){
-                coordChosen = aiGreedy.makeDecision(othelloField);//aiGreedy
-            }
-            cout << coordChosen.row << " " << coordChosen.col << endl;
-            othelloField.setPositions(coordChosen,playerId);
+            if(othelloField.getNbPlayablePos() > 0){
+                if(playerId == playerRandomId){
+                    coordChosen = aiRandom.makeDecision(othelloField);
+                }
+                else if(playerId == playerGreedyId){
+                    coordChosen = aiGreedy.makeDecision(othelloField);//aiGreedy
+                }
+                cout << coordChosen.row << " " << coordChosen.col << endl;
+                othelloField.setPositions(coordChosen,playerId);
 
-            othelloField.nextTurn();
+                othelloField.nextTurn();
+            }
+            else{
+                othelloField.updatePlayablePos(playerId%2 + 1);//update possible position for next player
+            }
+
             playerId = playerId%2 + 1;//if playerId == 1 -> 2 if playerId == 2 -> 1
-            //othelloField.plotGameFieldClass();
+
+
+            othelloField.plotGameFieldClass();
             if(othelloField.get_m_nbTurn() == nbTurnTotal - 3){//remove the 4 original positions
                 gameOnGoing = 0;
             }
@@ -55,22 +63,16 @@ int main(){
     }
 
     tuple<int, int> res = othelloField.getScore();
+    //string outputString;
     if( get<0>(res) > get<1>(res) ){
         cout << "Random player won " << get<0>(res) << " against " << get<1>(res) << endl;
     }
     else{
+        //outputString = outputString + to_string(1);
         cout << "Greedy player won " << get<1>(res) << " against " << get<0>(res) << endl;
     }
 
     //othelloField.plotGameFieldClass();
-//    const int NUMBERS = 10;
-//    double randvalue;
-//    int n;
-//    srand(1);
-//    for (n = 0; n<NUMBERS; n++){
-//        randvalue = rand();
-//        cout << randvalue << endl;
-//    }
 
     return 0;
 }

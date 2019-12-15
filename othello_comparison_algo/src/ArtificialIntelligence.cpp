@@ -44,7 +44,7 @@ Coordinate ArtificialIntelligence::makeDecision(GameField gf) const{
 
 Coordinate ArtificialIntelligence::makeDecisionRandom(GameField gf) const{
     int nbPlayablePos = gf.getNbPlayablePos();
-    //cout << nbPlayablePos << " playable positions" << endl;
+    cout << nbPlayablePos << " playable positions" << endl;
     int randPosChosen = rand() % nbPlayablePos;
     return gf.getNthPos(randPosChosen);
 }

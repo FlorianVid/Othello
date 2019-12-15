@@ -74,9 +74,10 @@ int GameField::setPositions(Coordinate coord, int playerId){ //check if given co
         cout << "Player " << playerId << endl;
         cout << "Valid position" << endl;
         m_positions[x][y] = playerId;
-        cout << x << y << endl;
+        cout << "Coordinate chosen: " << x << " " << y << endl;
         Coordinate pointChosen(x,y);
 
+        //flip opponent's positions
         for(Mid::const_iterator iterMap = m_playablePos.begin(); iterMap != m_playablePos.end(); ++iterMap){
             if(iterMap->first == pointChosen){
                 for(vector<Coordinate>::const_iterator iterVect = iterMap->second.begin(); iterVect != iterMap->second.end(); ++iterVect){
@@ -105,6 +106,7 @@ void GameField::plotGameFieldClass() const
 
 bool GameField::checkPlayablePos(Coordinate coord) const
 {
+    //cout << "nb playable pos: " << m_playablePos.size() << endl;
     for (Mid::const_iterator iter = m_playablePos.begin(); iter != m_playablePos.end(); ++iter){
         cout << "key" << '\t'<< iter->first.row << '\t' << iter->first.col << '\n';
         //cout << "Nb pos to switch: " << iter->second.size() << endl;

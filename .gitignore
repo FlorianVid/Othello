@@ -1,3 +1,4 @@
-*.o
-./othello_comparison_algo/*.depend
-**/*.o
+*.txt
+othello_comparison_algo/bin/
+othello_comparison_algo/obj/
+*.depend

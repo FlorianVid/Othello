@@ -27,12 +27,12 @@ class GameField
     Coordinate getNthPos(int n) const;
     std::tuple<int, int> getScore() const;
     Mid getPlayablePos() const;
+    void updatePlayablePos(int playerId);
 
     ~GameField();
     private:
     bool checkPlayablePos(Coordinate coord) const;
     bool checkPosInField(Coordinate coord) const;
-    void updatePlayablePos(int playerId);
 
     //attributes
     private:
