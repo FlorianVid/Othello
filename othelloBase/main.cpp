@@ -52,7 +52,7 @@ int main(){
         }
 
         if(typeAI == 1){
-            ai.set_typeAI("randome");
+            ai.set_typeAI("random");
         }
         else{
             ai.set_typeAI("greedy");
