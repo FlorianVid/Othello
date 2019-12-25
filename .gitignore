@@ -1,8 +1,10 @@
+/othello_base/bin/
+/othello_base/obj/
+/othello_comparison_algo/bin/
+/othello_comparison_algo/obj/
+*.depend
+*.txt
 *.o
 *.cbp
 *.layout
-othello_base/bin/
-othello_base/obj/
-othello_comparison_algo/bin/
-othello_comparison_algo/obj/
-*.depend
+
