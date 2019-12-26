@@ -117,7 +117,7 @@ int main(){
             othelloField.nextTurn();
             playerId = playerId%2 + 1;//if playerId == 1 -> 2 if playerId == 2 -> 1
             othelloField.plotGameFieldClass();
-            if(othelloField.get_m_nbTurn() == 6){//nbTurnTotal - 3){//remove the 4 original positions
+            if(othelloField.get_m_nbTurn() == nbTurnTotal - 3){//remove the 4 original positions
                 gameOnGoing = 0;
             }
         }
