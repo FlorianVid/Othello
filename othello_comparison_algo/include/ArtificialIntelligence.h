@@ -18,7 +18,7 @@ class ArtificialIntelligence
     private:
         Coordinate makeDecisionRandom(GameField gf) const;
         Coordinate makeDecisionGreedy(GameField gf) const;
-
+        Coordinate makeDecisionCorner(GameField gf) const;
     protected:
 
     //attributes

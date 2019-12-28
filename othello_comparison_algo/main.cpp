@@ -5,7 +5,7 @@
 #include "./include/coordinates.h"
 #include <tuple>
 #include <ctime>
-#include <cmath>
+#include <math.h>
 #include "./include/updateScores.h"
 //#include <fstream>
 
@@ -16,7 +16,7 @@ int main(){
     cout << "%%%%%%\nRandom AI against greedy AI... \nwho will win?\n%%%%%%" << endl;
     srand(time(NULL));
     //launch 100 games, see who win each time
-    int nbIt = 2;//number of iterations
+    int nbIt = 1000;//number of iterations
     //define AI that fight
     ArtificialIntelligence aiRandom;
     aiRandom.set_typeAI("random");
@@ -37,6 +37,7 @@ int main(){
     Coordinate coordChosen(0,0);
     for(int i = 0; i<nbIt; i++){
         gameOnGoing = 1;
+        GameField othelloField;
         while( gameOnGoing == 1 ){
             if(othelloField.getNbPlayablePos() > 0){//condition to add in the other main
                 if(playerId == playerRandomId){
@@ -63,20 +64,19 @@ int main(){
             }
         }
 
-    tuple<int, int> res = othelloField.getScore();
-    //string outputString;
-    if( get<0>(res) > get<1>(res) ){
-        cout << "Random player won " << get<0>(res) << " against " << get<1>(res) << endl;
-        idWinner = 1;
-    }
-    else{
-        //outputString = outputString + to_string(1);
-        cout << "Greedy player won " << get<1>(res) << " against " << get<0>(res) << endl;
-        idWinner = 2;
-    }
+        tuple<int, int> res = othelloField.getScore();
+        //string outputString;
+        if( get<0>(res) > get<1>(res) ){
+            cout << "Random player won " << get<0>(res) << " against " << get<1>(res) << endl;
+            idWinner = 1;
+        }
+        else{
+            //outputString = outputString + to_string(1);
+            cout << "Greedy player won " << get<1>(res) << " against " << get<0>(res) << endl;
+            idWinner = 2;
+        }
 
     //othelloField.plotGameFieldClass();
     updateScores(idWinner);
     }
-    return 0;
 }

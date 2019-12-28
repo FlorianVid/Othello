@@ -3,6 +3,7 @@
 
 #include <bits/stdc++.h>
 #include <iostream>
+#include <math.h>
 
 struct Coordinate {
     int row, col;
@@ -27,6 +28,13 @@ struct Coordinate {
             return true;
         return false;
     }
+
+    double computeDistance(const Coordinate& coord) const {
+        double dist;
+        dist = sqrt(pow(row - coord.row,2) + pow(col - coord.col,2));
+        return dist;
+    }
+
 };
 
 #endif // COORDINATES_H_INCLUDED
